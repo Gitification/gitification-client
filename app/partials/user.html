@@ -1,1 +1,33 @@
-<div>Users management page</div>
+<h1>User management page</h1>
+<div class="container-fluid">
+  <div class="row-fluid">
+ <div class="span10">
+      <!--Body content-->
+
+     
+      <table class="table table-condensed">
+      <caption>List of all users</caption>
+        <thead>
+          <tr>
+            <th>Login</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in allUsers">
+            <td>{{user.login}}</td>
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+            <td>{{user.email}}</td>
+            <td><button class="btn" type="button">Modify</button><button class="btn btn-danger" type="button">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+      </div>
+</div>

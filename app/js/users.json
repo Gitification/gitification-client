@@ -1,0 +1,16 @@
+[
+		{
+			"user_id":1,
+			"login":"gpap",
+			"firstname":"geoffrey",
+			"lastname":"papaux",
+			"email":"geoffrey.papaux@master.hes-so.ch"
+		},
+				{
+			"user_id":2,
+			"login":"griv",
+			"firstname":"Vincent",
+			"lastname":"Grivel",
+			"email":"vincent.grivel@master.hes-so.ch"
+		}
+	]

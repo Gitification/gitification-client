@@ -2,7 +2,8 @@
 
 /* App Module */
 
-angular.module('gamification', []).
+
+angular.module('gamification', ['gamificationServices']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/application', {templateUrl: 'partials/application.html', controller: ApplicationCtrl}).

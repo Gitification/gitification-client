@@ -14,6 +14,7 @@ function HomeCtrl($scope) {
 
 }
 
-function UserCtrl($scope) {
-
+function UserCtrl($scope, Users) {
+	$scope.allUsers = Users.all({appId: 1});
 }
+
