@@ -20,21 +20,20 @@ angular.module('gamificationServices', ['ngResource']).
             query: {
                 method: 'GET',
                 isArray: true},
+            create: {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'}},
             get: {
                 method: 'GET',
                 userId: '@userId'},
             delete: {
                 method: 'DELETE',
                 userId: '@userId'},
-            save: {
-                method: 'POST',
-                postData: '@postData',
-                headers: {'Content-Type': 'application/json'},
             update: {
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json'},
                 userId: '@userId'}
 
             }
-        });
+        );
     });

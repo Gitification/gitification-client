@@ -61,11 +61,11 @@ function UserModifyCtrl($scope,$routeParams, $location, Users) {
 /*
 * User creation controller
  */
-function UserCreateCtrl($scope, $location, Users){
-
+function UserCreateCtrl($scope,$routeParams, $location, Users){
+    $scope.user = Users.get({appId: 1, userId: 0});
     $scope.create = function(user){
-        Users.save({appId: 1, postData: user});
-        //user.$save({appId: 1});
+       // Users.addUsr({appId: 1, postData: user});
+        user.$create({appId: 1});
         $location.path('/user');
     }
     $scope.cancel = function(){
