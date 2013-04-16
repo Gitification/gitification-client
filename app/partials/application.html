@@ -1,1 +1,43 @@
-<div>Applications management page  </div>
+<h1>Application management page</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div ng-controller="ApplicationCtrl" class="span10">
+            <!--Body content-->
+
+
+            <table class="table table-condensed">
+                <legend>List of all application</legend>
+
+                <thead>
+                <tr>
+                    <th>Site</th>
+                    <th>Callback</th>
+                    <th>Created at</th>
+                    <th>Admin</th>
+                    <th>Number of users</th>
+                    <th>Number of events</th>
+                    <th>Number of badges</th>
+                    <th>Number of rules</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="app in allApps">
+                    <td>{{app.site}}</td>
+                    <td>{{app.callback}}</td>
+                    <td>{{app.created_at| date:'yyyy-MM-dd'}}</td>
+                    <td>{{app.admin}}</td>
+                    <td>{{app.statistics.user_count}}</td>
+                    <td>{{app.statistics.event_count}}</td>
+                    <td>{{app.statistics.badge_count}}</td>
+                    <td>{{app.statistics.rule_count}}</td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            <button ng-click="create()" class="btn" type="button">Create a new application</button>
+
+        </div>
+    </div>
+</div>

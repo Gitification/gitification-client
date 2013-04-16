@@ -1,0 +1,46 @@
+<h1>Badge management page</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div ng-controller="BadgeModifyCtrl"  class="span10">
+            <!--Body content-->
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Modify a badge</legend>
+                    <div class="control-group">
+                        <label class="control-label">Name</label>
+
+                        <div class="controls">
+                            <input ng-model="badge.name" class="input-xlarge" type="text" required>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Category</label>
+
+                        <div class="controls">
+                            <input ng-model="badge.category_id" class="input-xlarge" type="text"  required>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Icon</label>
+
+                        <div class="controls">
+                            <input ng-model="badge.icon" class="input-xlarge" type="text" required>
+
+                            <button ng-click="upload()" type="button" class="btn">Upload</button>
+                            <a class="thumb"><img ng-src="{{badge.icon}}"></a>
+                        </div>
+
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button ng-click="cancel()" type="button" class="btn">Cancel</button>
+                            <button ng-click="update(badge)" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

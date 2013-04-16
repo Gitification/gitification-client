@@ -1,0 +1,42 @@
+<h1>Application management page</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div ng-controller="ApplicationCreateCtrl"  class="span10">
+            <!--Body content-->
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Create an application</legend>
+                    <div class="control-group">
+                        <label class="control-label">Site</label>
+
+                        <div class="controls">
+                            <input ng-model="app.site" class="input-xlarge" type="text" placeholder="http://github.com" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">callback</label>
+
+                        <div class="controls">
+                            <input ng-model="app.callback" class="input-xlarge" type="text" placeholder="I don't know what is expected here" required>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">admin</label>
+
+                        <div class="controls">
+                            <input ng-model="app.admin" class="input-xlarge" type="text" placeholder="TheBigBoss"  required>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <button ng-click="cancel()" type="button" class="btn">Cancel</button>
+                            <button ng-click="create(app)" type="submit" class="btn btn-success">Create</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

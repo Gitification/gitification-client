@@ -1,1 +1,36 @@
-<div>Badges management page</div>
+<h1>Badges management page</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div ng-controller="BadgeCtrl" class="span10">
+            <!--Body content-->
+
+
+            <table class="table table-condensed">
+                <legend>List of all badges</legend>
+
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Icon</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="badge in allBadges">
+                    <td>{{badge.name}}</td>
+                    <td>{{badge.category_id}}</td>
+                    <td><a class="thumb"><img ng-src="{{badge.icon}}"></a></td>
+                    <td>
+                        <button ng-click="modify(badge)" class="btn" type="button">Modify</button>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <button ng-click="create()" class="btn" type="button">Create a new badge</button>
+
+        </div>
+    </div>
+</div>

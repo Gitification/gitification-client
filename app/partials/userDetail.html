@@ -1,0 +1,30 @@
+<h1>User management page</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div ng-controller="UserModifyCtrl"  class="span10">
+            <!--Body content-->
+
+            <table class="table table-condensed">
+            <legend>Badges of {{user.firstname}} {{user.lastname}}</legend>
+                <thead>
+                <tr>
+                    <th>badge name</th>
+                    <th>icon</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="badge in badges.badges_list">
+                    <td>{{badge.badge_name}}</td>
+                    <td>need to change the api to retrun the badge icon</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="control-group">
+                <div class="controls">
+                    <button ng-click="cancel()" type="button" class="btn">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
