@@ -1,0 +1,49 @@
+---
+language: node_js
+node_js:
+- 0.8
+before_script:
+  - npm install -g grunt-cli
+after_script:
+  - echo -n $gitification_base64_{00..27} >> ~/.ssh/gitification_base64
+  - base64 --decode --ignore-garbage ~/.ssh/gitification_base64 > ~/.ssh/gitification
+  - chmod 600 ~/.ssh/gitification
+  - echo -e "Host deploy\n\tStrictHostKeyChecking no\n\tHostName ks25416.kimsufi.com\n\tPort 22\n\tUser gitification\n\tIdentityFile ~/.ssh/gitification" >> ~/.ssh/config
+  - ssh-add ~/.ssh/gitification
+  - ssh deploy 'source .bash_profile && cd gitification-client && git pull'
+notifications:
+  email:
+  - 'vincent.pasquier+osf@gmail.com'
+  - 'vgrivel+osf@gmail.com'
+  - 'geoffrey.papaux+osf@gmail.com'
+  - 'doriangambin+osf@gmail.com'
+env:
+  global:
+  - secure: "f2bopjxnYEzfg2I5i/L6MYW9RK+pUQd8/pMSm8yIzJ9QX0m3k4Y1lMgiJn6Z\no8bRnwbkk51E8NLwVQCSw7SPusD0QMi0S3jMzQySun0xwnRNGDwozAaUwTli\nkv/WiqDc+xm3zAKNjw2Ft++WXc5QXVw3tHK7PXLo95RtyTEErHw="
+  - secure: "HUnTblKKUH7JMauWJbb0dTLyGusu8X8N6x1sOIW4yWA4G3l6cnrVk5weOYNs\nHFgebPflv4awdtFm5P+1KdUc82HICckmRMl5PYXvDAqJ800jFkeN048BYdl8\nT54Gi8QSb4bM8WrJZZ089dmaRS8r5yMTCEzbKljb0gXf1sOhJAc="
+  - secure: "iW2NgaLXSgAnFXvvvyhdmizQHCyLseQKQer52J2Y8MryVQsb0m5yJhILHt/4\n67nRQUcM7US8Yhvyd54xMtQEmA3mG19Dz6x0v+DS1WDAiZlzhjXec7atxqUX\nZILeVCVNm1ApjkhayJ6qVXPQkIBH5kFVYioUj+9+G5xkhlZr5PM="
+  - secure: "AI8cem7h1N8QvLT9QVgletdrDUchHzCJFX0pwI2G8+cSBJOxtsobOQMOZL+k\nk5kQu9qC4HsoHHnNDeIc7noXtL1bbXKWQ3w71YReenP3UwzVKQqsn7Oq1eBe\nyoGj8JePLF3h8bHTexw21i6B6xUU7uDvPkdQSM+yWuyMArZfmH8="
+  - secure: "cR7IAXlPCBaCwNcIL8KgqHMZMS8koJFGVvmay7c1E+kl8IUboHED9HCSZFdK\nrHEb0h9AGC3oeBpMNW/zzLQa6VW4m5MgGzcmsWOPWSNDZq/EhgViTktNaHHb\nryXYYoc3I+OmUV/TfiuM+AgmixNEimRC0GF5eKzLuJIdTkSiOKI="
+  - secure: "bgFvw2Rtt0d4FDbP0xL8tBYHpvqxSH+wpWugYVhl7UiEYTi+TjUHvWjXrVmp\nGmSr3Eyn69EXRKanCzLkYGocrMVb1cauaJDANpTkCbo5EbmDHPoNiZBP8dJJ\nli4kJRXNNwGpcMEuHne4p8wa+2O0czJmUl2JWVbGnpruTDrCuJk="
+  - secure: "APuHbZMVJl729IEjE99k3VOhiowMTeuY3oflJdNe7m/JkyMJFgtWAvtaltEy\nzmTtFmyyTj/66K2HfJ8l/fKAK8CNxEBc77X9xRPqmI9s5ondMwCzh+s/oQ98\nb33uAE8PY2ksBdpvpERqB32Yo7cuOOFvveEyL3FNAky5+hN1q3c="
+  - secure: "BISM3oahSdCY/31WvtuuenELTJERmhYv+Tc8K48vv22wVYBfBamjenHP1GoQ\nQBporYWbYXqKQhgB3vPtfa2iOkPKjyvNbHjL1+kTtqVoSLK0OjseifIl9LiU\nhSfnC6sbP0ghthY0R1E3T9Upi8lnRa7c01kiHcEs/zgwaDw4Nwo="
+  - secure: "i5I4tb3kyu+zAlzdxypH0nFElyEwtUbAnMP+RMBnjvn7WnR/s13FF1zRKmy1\ndf0GgTDcEAIH8FZwwS6L+dHfQtaGwmd8wT9Yshshqex/zHG1wfon27SpUWsx\n/1ESdZfFbUYVcxeBfSlwEXH8GEzfZasFbjqXVQyvTo6GMCa2EyM="
+  - secure: "XmIv64neqFQi1R1T+ddO1jDWL052zaPHfo5tgmyUXbX6byUdfYEExpz3lSie\nQRKQceP/kE+MXoEnH9vFSkSIeSNAQCJCS9R0gDkOJ7mcTp71gC3Nylbz2uYp\n9/enwEO0O+l7sGO67SEDJmg56p8mHvfD7OT1puNprhA0p2kJ//8="
+  - secure: "XVryx+2vVhwMTUOj2c2UT+jF1slu89PpYetPTTOZTU0LSy9lShucWLtvOZKL\nGYumsQAHVdHFUMWxjJBT46/h+wpy1JiB+IVIVDZsOVMq+fcnGdW0Rnv6KSKf\nfIYav/jEZKk6cUHwVIA6JkjmuqJMIl9oqGRH1oh59xtA1JGvU+I="
+  - secure: "c355wnjL2g8hQFrRTZhkQEedxnrZ+MDF3oe265K7/civq+RpAuo854XlYQjm\nNpnPQ9ZFDUFtqfDOdXsDvU+YP00fH5QaFRUKdqkSkjksbmzCAyA+utKse0TG\nrP7Dx13Oe8q7ie2jgivbv77831qMwFs/7zFFnyQW7BNqMbf8NlM="
+  - secure: "N7C/x4QCGKM/WQe2AZpBJYWmJsyC3KSrTob5/7jClZ8oJv/T1CfZLw1DhEvJ\nAPHRw4dB05VyS0+73jMqaWRS8gXAbSuqxiXjZ6H2F2IQR6mV3Y97J0YNBBV4\nSczAq98+QOx7Zy2FlZKhaE678eiTqheGLOqfPT3MCCgJ+Cdfhz8="
+  - secure: "a+ak66VATEI+qfW6xYC2UKBuD4T9KKrfTRjOmQ5GRmu9ZYowWYoy6sCFlMo8\niD8znmM5mQu85WzyNTuz5UwhcqeyDnAWqcqh9PZkORO4ivQocNIzzM+oqoZw\nbO9lDVV9JaDneJTidldnRicnRrGu8CsKE7CEp6KgcvCv1esoyHM="
+  - secure: "nABYBcibxw88xLBmpPvoxeSe4A52A7lnrc7SoH5NV9sTCzQwxD8x4OPSJpTA\nDs1gnEKgDL8noalRRe8fglrOfwVi80TmuNk00xkCUyv9GrqHegjmHCzhB0/E\nE6eAXI0vLSiB8G2l19DRJ4YleNyLr0aUx9PdAj+/UR0sw2GB/HQ="
+  - secure: "NhUfj5jFi4cLoURjKzoJFIaxDncNlF4VvMRDoEm+HMpfwd/BeH8bd450CEP+\noVxdhVQEyjWZ0Gc6q7D3vFUi36E97jq5utpUZCJUgnu65ZTYdUNizvlOsdqa\nRX648AUJFuJZxMKnlVRXa5MblNhQ0gJop7pPZCb1LixBEcL412A="
+  - secure: "hZVf17DzJedIsRBeD/yeD1m/LksZBUiUCM1hP+9YG/HZ6gezppYsiOAdp5BN\nVE9JunZp6m0pzh2CzRjT2bckzB7czSqRGmbm0n4Yi95rZKaeLL5V+LNCh5Qz\nYbQBII1BYJ2Ku12z2slOOVAHpKcjaPDiOoh+wAcDePjoQpe8FVA="
+  - secure: "GFbFdvYWcNVnBKQMoLPEWTj78Pz9WbUTs6pjuHvAVbmMHW9YDTAnfpZe9nIn\nG0DIguCWUKzxhFTvHRsfGlpav849WSB0oEBA20J4s9xyCo/5K1f9vk2E5o2M\nTrBxmHVcPiLyR+Hpr/xSKmdS1rFKTTxlMo5X5GajiGUgKEPAUB4="
+  - secure: "UTpeC5F4+N5bBHcW6Lv/1nNAGbrOCaZ/U/TMiuBQg01rc3tVYe+h1HpxZa02\nJL7tzfDp2jvPl3Fyu+/th8+A1RMd1Ee55LjuyvgN9gTQuBtZd2FZpTFUF8Js\n4Ex/VdM6cfnx/cojuopAjkS1xqwPnYCYwxStg6oAco4le3aoZ8A="
+  - secure: "mOo1h5TrlWOfRaqn8UcbU8gdh0Y4QPmevaalTxxCELHaVJMlEDEdbjt7h4hb\nh3vqCGT5sCMT1IyD83ofrQcHITUSMQZXl30fslix63sYmsC35Kt6OgBVnXJc\nKG/Yx3wiyqYs/dIPBJzOMh6v+lp2pEwhbNWmZlNa8Y1DanVDC3I="
+  - secure: "QgeDCv3WMc7+DXlCnIMbXBNQ0wK7I7S9I/LOmFWZGkmejW+/MGkHE0Sj8QOZ\n8Mq1lr3WbNRGVkPSE8iW7K/P0u7GM54yVcUay+l2OJeuHGSQ7xUNHAjeSgNv\nQ/Tv5PDZAx3lgVJVUc/qIqoY0P7Z7Tl4/3rycFf3yRBHJSUkdQI="
+  - secure: "MPCybbOgKWXR66xWtPngiG5uXJ5viiV6r5jCyvVGbQrP5sMruSuMP0aAyqTY\nBoSUSyk0W3Imle6kloioYt1ltjytcOkAVbcuMBf3c1QNRIZLcz0NXwerIAWz\nonaQvejMhWga9T7FEPfM4Oj+q/jFG69Y66kJZzLpbkdeMaQKHrI="
+  - secure: "Og+9PMnb2zhM2zPbxafX2n17fqsRRo4apWZ2VHalGI0iDF2EwqWKT7BXOtS+\nr7CIM72kIo/Ga1LTdMgH93Y2yBTNeev+zMMfdVe6SrecSGdZaEiaQgiCaN/i\nU0t2nXluxAkY4VF3Fo14dNO3kT29LpcY0k9eXSuDcr7Bbj+G87s="
+  - secure: "fyOLx6a/KJ2oFz5E/dvsUHrvs77kSBnVHvQZI8zzEKd5BL6l9oe2+nY/SZAu\nDsEnSePY2fbtTMVJEv8k0CUh8wMr9lane5j0c0rM7iL4yJAaWsc5FT9o9aIx\nxLKStJqa7mktHguYgmPZX3tWnAFhqVZ0erpbe5RKfuQmd+inUsM="
+  - secure: "iqh0yFnxTmalcFThAOzr44xoI7hemTrK4auqnWaTy/CkbcXuAnZbIsraj3Et\nBJQL9dkP3yF+wCkRQ3pY5pTJVA6373fEi6mGym4nYQiOSBCNU6cn2rZh/ow7\nefg332Dw6w0D8ozEVgX4opt/RXMWckVYaKNxuxGoVNrC/BDM1wE="
+  - secure: "eOr7h6HKd8M/j8NKgm1GAngqZmKMz3ujHlmmpMIjCGC5B4u1IVZwdVE+4zGq\noMnqCE6mKhvofDZ80npPSIAdUOUdb6aCHj+iMjY0RKI/o9BiaxH8lmC5ZnNP\nevB0m7cPJm0dJEoLR6WgulxNlhd8NMnf5Ab8jkR3hGdUooPntIc="
+  - secure: "L827/w+9GqWc44EakAt+7hi55NtSCI5w7QLRV0MEdEmio0q+5kELSwa55ggB\n+2ZvXJh8r4eluR5fvPhlAkGw4OXc1ex3e3DABy5+gDBCQqZmCVfIdMRdoLVq\nAUEimHRxjGv4F/LZPMwFGdSukrpDmis2oInNkZ8rX9VBHgXbk4w="
+  - secure: "D0+Tcv58KclAuS2mxxYdHwu7EpNx00AMclaoCeH/cK4JwAjF673isIh7hQyJ\nEv4TFvvATWX8St7x9lSOAOXmnUhzY8BStJD6gyntBr41yjLT2bIMM36u4KtG\nVCLAiZm5jb+RCxQBpu72wdP8j54WlJPIfVB75txh094OqoJo7DU="
