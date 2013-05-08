@@ -159,6 +159,11 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
             get: {
                 method: 'GET',
                 typeId: '@typeId'
+            },
+            update: {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                ruleId: '@typeId'
             }
         });
     });
