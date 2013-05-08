@@ -10,9 +10,11 @@
 
 'use strict';
 
+var api = 'http://localhost\\:8080/';
+
 angular.module('gamificationServices', ['ngResource'], function ($provide) {
     $provide.factory('Users', function ($resource) {
-        return $resource('http://localhost\\:8080/applications/:appId/users/:userId/:badge', {
+        return $resource(api + '/applications/:appId/users/:userId/:badge', {
             appId: '@appId'
         }, {
             query: {
@@ -47,7 +49,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
     });
 
     $provide.factory('Badges', function ($resource) {
-        return $resource('http://localhost\\:8080/applications/:appId/badges/:badgeId', {
+        return $resource(api + '/applications/:appId/badges/:badgeId', {
             appId: '@appId'
         }, {
             query: {
@@ -72,7 +74,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
     });
 
     $provide.factory('Category', function ($resource) {
-        return $resource('http://localhost\\:8080/applications/:appId/badges/categories/:categoryId', {
+        return $resource(api + '/applications/:appId/badges/categories/:categoryId', {
                 appId: '@appId'
         }, {
             query: {
@@ -97,7 +99,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
     });
 
     $provide.factory('Rules', function ($resource) {
-        return $resource('http://localhost\\:8080/applications/:appId/rules/:ruleId', {
+        return $resource(api + '/applications/:appId/rules/:ruleId', {
                 appId: '@appId'
         }, {
             query: {
@@ -126,7 +128,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
     });
 
     $provide.factory('Events', function ($resource) {
-        return $resource('http://localhost\\:8080/applications/:appId/events/:eventId', {
+        return $resource(api + 'applications/:appId/events/:eventId', {
             appId: '@appId'
         }, {
             query: {
@@ -145,7 +147,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
     });
 
     $provide.factory('EventsTypes', function ($resource) {
-        return $resource('http://localhost\\:8080/applications/:appId/events/types/:typeId', {
+        return $resource(api + 'applications/:appId/events/types/:typeId', {
             appId: '@appId'
         }, {
             query: {
@@ -168,7 +170,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
         });
     });
     $provide.factory('Leaderboard', function ($resource) {
-        return $resource('http://localhost\\:8080/applications/:appId/leaderboard', {
+        return $resource(api + '/applications/:appId/leaderboard', {
             appId: '@appId'
         }, {
             query: {
@@ -178,7 +180,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
         });
     });
     $provide.factory('Applications', function ($resource) {
-        return $resource('http://localhost\\:8080/applications/:appId', { }, {
+        return $resource(api + '/applications/:appId', { }, {
             query: {
                 method: 'GET',
                 isArray: true
