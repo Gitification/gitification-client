@@ -17,16 +17,22 @@
                         <label class="control-label">Category</label>
 
                         <div class="controls">
-                            <input ng-model="badge.category_id" class="input-xlarge" type="text" placeholder="category ID" required>
+                            <select ng-model="category" ng-options="i.name for i in allCategories" >
+                                <option value="">-- Chose category --</option>
+                            </select>
+                            or add a new one:
+                            <input ng-model="newCategory.name" class="input-large" type="text">
+                            <button ng-click="createCategory(newCategory)" type="button" class="btn">Add</button>
                         </div>
+
                     </div>
                     <div class="control-group">
                         <label class="control-label">Icon</label>
 
                         <div class="controls">
                             <input ng-model="badge.icon" class="input-xlarge" type="text" placeholder="Link to the icon" required>
-                            <button ng-click="upload()" type="button" class="btn">Upload</button>
-                            <a class="thumb"><img ng-src="{{badge.icon}}"></a>
+
+                            <a class="thumb"><img ng-src="{{badge.icon}}" class="fixed_width"></a>
                         </div>
                     </div>
 

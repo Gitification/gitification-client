@@ -20,7 +20,7 @@
                 <tr ng-repeat="badge in allBadges">
                     <td>{{badge.name}}</td>
                     <td>{{badge.category_id}}</td>
-                    <td><a class="thumb"><img ng-src="{{badge.icon}}"></a></td>
+                    <td><a class="thumb"><img ng-src="{{badge.icon}}" class="fixed_width"></a></td>
                     <td>
                         <button ng-click="modify(badge)" class="btn" type="button">Modify</button>
 

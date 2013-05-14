@@ -1,0 +1,26 @@
+<h1>Event type management page</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div ng-controller="EventTypeModifyCtrl"  class="span10">
+            <!--Body content-->
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend>Modify the event type name</legend>
+                    <div class="control-group">
+                        <label class="control-label">Name</label>
+
+                        <div class="controls">
+                            <input ng-model="eventType.name" class="input-xlarge" type="text" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button ng-click="cancel()" type="button" class="btn">Cancel</button>
+                            <button ng-click="update(eventType)" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

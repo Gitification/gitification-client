@@ -1,1 +1,39 @@
 <h1>Rules management page</h1>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div ng-controller="RuleCtrl" class="span10">
+            <!--Body content-->
+
+
+            <table class="table table-condensed">
+                <legend>List of all rules</legend>
+
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>badge</th>
+                    <th>Event type</th>
+                    <th>Threshold</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="rule in allRules">
+                    <td>{{rule.name}}</td>
+                    <td>{{rule.badge}}</td>
+
+                    <td><ul ng-repeat="event in rule.event_types"><li>{{event.event_type}} TODO display the name</li></ul></td>
+                    <td><ul ng-repeat="event in rule.event_types"><li>{{event.threshold}}</li></ul></td>
+                    <td>
+                        <button ng-click="modify(rule)" class="btn" type="button">Modify</button>
+                        <button ng-click="delete(rule)" class="btn btn-danger" type="button">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <button ng-click="create()" class="btn" type="button">Create a new rule</button>
+
+        </div>
+    </div>
+</div>

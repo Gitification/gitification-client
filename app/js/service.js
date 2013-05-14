@@ -10,7 +10,8 @@
 
 'use strict';
 
-var api = 'http://localhost\\:8080/';
+//var api = 'http://localhost\\:8080/api';
+var api = 'http://ks25416.kimsufi.com/api';
 
 angular.module('gamificationServices', ['ngResource'], function ($provide) {
     $provide.factory('Users', function ($resource) {
@@ -128,7 +129,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
     });
 
     $provide.factory('Events', function ($resource) {
-        return $resource(api + 'applications/:appId/events/:eventId', {
+        return $resource(api + '/applications/:appId/events/:eventId', {
             appId: '@appId'
         }, {
             query: {
@@ -147,7 +148,7 @@ angular.module('gamificationServices', ['ngResource'], function ($provide) {
     });
 
     $provide.factory('EventsTypes', function ($resource) {
-        return $resource(api + 'applications/:appId/events/types/:typeId', {
+        return $resource(api + '/applications/:appId/events/types/:typeId', {
             appId: '@appId'
         }, {
             query: {
