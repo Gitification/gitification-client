@@ -20,9 +20,9 @@
                 <tbody>
                 <tr ng-repeat="rule in allRules">
                     <td>{{rule.name}}</td>
-                    <td>{{rule.badge}}</td>
+                    <td>{{rule.badgeName}}</td>
 
-                    <td><ul ng-repeat="event in rule.event_types"><li>{{event.event_type}} TODO display the name</li></ul></td>
+                    <td><ul ng-repeat="event in rule.event_types"><li>{{event.name}}</li></ul></td>
                     <td><ul ng-repeat="event in rule.event_types"><li>{{event.threshold}}</li></ul></td>
                     <td>
                         <button ng-click="modify(rule)" class="btn" type="button">Modify</button>

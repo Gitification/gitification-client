@@ -61,9 +61,18 @@ function ApplicationCreateCtrl($routeParams, $scope, $location, Applications) {
  * @param Badges
  * @constructor
  */
-function BadgeCtrl($routeParams, $scope, $location, Badges) {
+function BadgeCtrl($routeParams, $scope, $location, Badges, Category) {
     $scope.allBadges = Badges.query({appId: $routeParams.appid});
-
+    $scope.allCategories = Category.query({appId: $routeParams.appid},
+        function (data) {
+            var i;
+            for (i in $scope.allBadges) {
+                var newVal = data.filter(function (data) {
+                    return data.category_id === $scope.allBadges[i].category_id;
+                });
+                $scope.allBadges[i].categoryName = newVal[0].name;
+            }
+        });
     $scope.modify = function (badge) {
         $location.path('/' + $routeParams.appid + '/badge/' + badge.badge_id);
     };
@@ -88,12 +97,16 @@ function BadgeModifyCtrl($routeParams, $scope, $location, Badges, Category) {
     $scope.badge = Badges.get({appId: $routeParams.appid, badgeId: $routeParams.badgeid});
     $scope.allCategories = Category.query({appId: $routeParams.appid},
         function (data) {
-            $scope.categorySelected = Category.get({appId: $routeParams.appid, categoryId: $scope.badge.category_id});
+
+            var newVal = data.filter(function (data) {
+                return data.category_id === $scope.badge.category_id;
+            });
+            $scope.categorySelected = newVal[0];
+            $scope.categorySelected.name = newVal[0].name;
+            // $scope.categorySelected = Category.get({appId: $routeParams.appid, categoryId: $scope.badge.category_id});
         },
         function (err) {
         });
-
-
 
 
     $scope.update = function (badge) {
@@ -204,8 +217,32 @@ function EventTypeModifyCtrl($routeParams, $scope, $location, EventsTypes) {
  * @param Rules
  * @constructor
  */
-function RuleCtrl($routeParams, $scope, $location, Rules) {
+function RuleCtrl($routeParams, $scope, $location, Rules, Badges, EventsTypes) {
     $scope.allRules = Rules.query({appId: $routeParams.appid});
+    $scope.allBadges = Badges.query({appId: $routeParams.appid},
+        function (data) {
+            var i;
+            for (i in $scope.allRules) {
+                var newVal = data.filter(function (data) {
+                    return data.badge_id === $scope.allRules[i].badge;
+                });
+                $scope.allRules[i].badgeName = newVal[0].name;
+            }
+        });
+    $scope.allEventType = EventsTypes.query({appId: $routeParams.appid},
+        function (data) {
+            var i, j;
+            for (j in $scope.allRules) {
+                for (i in $scope.allRules[j].event_types) {
+                    //
+                    var newVal = data.filter(function (data) {
+                        return data.type_id === $scope.allRules[j].event_types[i].event_type;
+                    });
+                    $scope.allRules[j].event_types[i].name = newVal[0].name;
+                }
+            }
+        });
+
 
     $scope.modify = function (rule) {
         $location.path('/' + $routeParams.appid + '/rule/' + rule.rule_id);
@@ -256,19 +293,28 @@ function RuleModifyCtrl($routeParams, $scope, $location, Rules, Badges, EventsTy
         function (err) {
         });
 
-    $scope.allEventTypes = EventsTypes.query({appId: $routeParams.appid},
+    $scope.allEventTypes = EventsTypes.query({appId: $routeParams.appid});
+    $scope.allEventType = EventsTypes.query({appId: $routeParams.appid},
         function (data) {
-            $scope.allThreshold = $scope.rule.event_types;
-        },
-        function (err) {
+            var i;
+            for (i in $scope.rule.event_types) {
+                //
+                var newVal = data.filter(function (data) {
+                    return data.type_id === $scope.rule.event_types[i].event_type;
+                });
+                $scope.allThreshold[i].name = newVal[0].name;
+                console.log(newVal[0]);
+            }
         });
+
 
     $scope.allBadges = Badges.query({appId: $routeParams.appid},
         function (data) {
             var newVal = data.filter(function (data) {
                 return data.badge_id === $scope.rule.badge;
             });
-            $scope.badge = newVal[0].name;
+            $scope.badge = newVal[0];
+            $scope.badge.name = newVal[0].name;
         },
         function (err) {
         });

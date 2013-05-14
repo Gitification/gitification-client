@@ -18,7 +18,7 @@
                         <label class="control-label">Badge</label>
 
                         <div class="controls">
-                            <select ng-options="i.name as i.name for i in allBadges" ng-model="badge" required>
+                            <select ng-options="i.name as i.name for i in allBadges" ng-model="badge.name" required>
 
                             </select>
 
@@ -32,7 +32,7 @@
                             <label class="control-label">Event type</label>
 
                             <div class="controls">
-                                <select ng-model="thres.event_type" required ng-options="i.name as i.name for i in allEventTypes">
+                                <select ng-model="thres.name" required ng-options="i.name as i.name for i in allEventTypes">
 
                                 </select>
                                 Threshold: <input ng-model="thres.threshold" type="number" placeholder="threshold"
