@@ -10,8 +10,8 @@
 
 'use strict';
 
-var api = 'http://localhost\\:8080/api';
-//var api = 'http://ks25416.kimsufi.com/api';
+//var api = 'http://localhost\\:8080/api';
+var api = 'http://ks25416.kimsufi.com/api';
 
 angular.module('gamificationServices', ['ngResource'], function ($provide) {
     $provide.factory('Users', function ($resource) {
