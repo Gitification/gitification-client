@@ -31,7 +31,7 @@
                             <label class="control-label">Event type</label>
 
                             <div class="controls">
-                                <select ng-model="thres.event_type" required ng-options="i.name as i.name for i in allEventTypes">
+                                <select ng-model="thres.event_type" required ng-options="i.type_id as i.name for i in allEventTypes">
                                     <option value="">-- Chose an event type --</option>
                                 </select>
                                 Threshold: <input ng-model="thres.threshold" type="number" placeholder="threshold"

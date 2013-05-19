@@ -14,8 +14,8 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="badge in badges.badges_list">
-                    <td>{{badge.badge_name}}</td>
-                    <td>need to change the api to retrun the badge icon</td>
+                    <td>{{badge.name}}</td>
+                    <td><a class="thumb"><img ng-src="{{badge.icon}}" class="fixed_width"></a></td>
                 </tr>
                 </tbody>
             </table>
