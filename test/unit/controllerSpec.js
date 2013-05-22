@@ -5,3 +5,42 @@
  * Time: 10:39 PM
  * To change this template use File | Settings | File Templates.
  */
+
+'use strict';
+
+/* jasmine specs for controllers go here */
+describe('User controllers', function () {
+
+    beforeEach(function(){
+        this.addMatchers({
+            toEqualData: function(expected) {
+                return angular.equals(this.actual, expected);
+            }
+        });
+    });
+
+    beforeEach(module('gamificationServices'));
+
+    describe('UserCtrl', function () {
+        var scope, ctrl, $httpBackend;
+
+        beforeEach (inject(function(_$httpBackend_, $rootScope, $controller) {
+            $httpBackend = _$httpBackend_;
+            $httpBackend.expectGET('../test/data/user.json').
+                respond([{login: 'gpap'}, {login: 'vgri'}]);
+
+            scope = $rootScope.$new();
+            ctrl = $controller(UserCtrl, {$scope: scope});
+        }));
+
+
+        it('should create "users" model with 2 users fetched from xhr', function () {
+            expect(scope.allUsers).toEqual([]);
+            $httpBackend.flush();
+
+            expect(scope.allUser).toEqualData(
+                [{login: 'gpap'}, {login: 'dfgdf'}]);
+        });
+
+    });
+});

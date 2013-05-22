@@ -1,18 +1,20 @@
 // Karma configuration
 
 // base path, that will be used to resolve files and exclude
-basePath = '';
+basePath = './';
 
 // list of files / patterns to load in the browser
 files = [
-  JASMINE,
-  JASMINE_ADAPTER,
-  'app/lib/jquery/jquery.js',
-  'app/lib/angular/angular.min.js',
-  'app/lib/**/*.js',
-  'app/js/**/*.js',
-  'test/mock/**/*.js',
-  'test/spec/**/*.js'
+    JASMINE,
+    JASMINE_ADAPTER,
+    'app/lib/jquery/jquery.js',
+    'app/lib/angular/angular.js',
+    'app/lib/angular/angular-*.js',
+    'test/lib/angular/angular-*.js',
+    'app/lib/**/*.js',
+    'app/js/**/*.js',
+    'test/unit/**/*.js'
+
 ];
 
 // list of files to exclude
@@ -36,7 +38,7 @@ colors = true;
 logLevel = LOG_INFO;
 
 // enable / disable watching file and executing tests whenever any file changes
-autoWatch = false;
+autoWatch = true;
 
 // Start these browsers, currently available:
 // - Chrome
@@ -48,9 +50,16 @@ autoWatch = false;
 // - IE (only Windows)
 browsers = ['PhantomJS'];
 
+junitReporter = {
+    outputFile: 'test/unit-out.xml',
+    suite: 'unit'
+};
+
 // If browser does not capture in given timeout [ms], kill it
 captureTimeout = 5000;
 
 // Continuous Integration mode
 // if true, it capture browsers, run tests and exit
 singleRun = false;
+
+
